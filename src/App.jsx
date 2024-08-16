@@ -2,9 +2,12 @@ import { useState } from "react";
 import ImagePicker from "./components/ImagePicker";
 
 import images from "./images.js";
+import ImageGrid from "./components/ImageGrid.jsx";
 
 export default function App() {
   const [selectedImages, setSelectedImages] = useState([]);
+
+  const data = selectedImages.map((id) => images.find((obj) => obj.id === id));
 
   function handleOnSelect(imageId) {
     if (selectedImages.includes(imageId)) {
@@ -18,6 +21,8 @@ export default function App() {
     <>
       <header>Header</header>
       <main>
+        <ImageGrid data={data} />
+
         <ImagePicker
           images={images}
           selectedImages={selectedImages}
