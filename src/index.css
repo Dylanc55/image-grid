@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Lato:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Lato", serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #faedce;
+  color: #242424;
+  min-height: 100vh;
+}
+
+header,
+main {
+  max-width: 60rem;
+  margin: 0 auto;
+  background-color: #fefae0;
+}
+
+header {
+  height: 20vh;
+}
+
+main {
+  min-height: 80vh;
+}

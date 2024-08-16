@@ -1,3 +1,8 @@
 export default function App() {
-  return <main>App</main>;
+  return (
+    <>
+      <header>Header</header>
+      <main>Main</main>
+    </>
+  );
 }
