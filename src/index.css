@@ -28,17 +28,43 @@ main {
 }
 
 header {
-  height: 20vh;
+  height: 10vh;
+  padding: 2rem;
+  background-color: #ccd5ae;
+
+  h1 {
+    margin: 0;
+    text-transform: capitalize;
+    text-align: center;
+    font-weight: 700;
+    font-size: 3rem;
+    color: #3c4249;
+  }
 }
 
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 80vh;
+  min-height: 90vh;
+  padding: 4rem 2rem;
+}
+
+@media (max-width: 480px) {
+  header {
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+
+  main {
+    padding: 2rem;
+  }
 }
 
 #image-picker {
+  margin-top: 2rem;
+
   p {
     font-weight: bold;
     font-size: 0.85rem;
@@ -81,7 +107,16 @@ main {
 }
 
 #image-grid {
+  position: relative;
+  width: 100%;
   max-width: 50rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+
+  .placeholder {
+    width: 100%;
+    height: 30rem;
+    background-color: #e0e5b6;
+  }
 
   .image-container {
     position: relative;
@@ -141,6 +176,43 @@ main {
     .image-container {
       img {
         object-fit: cover;
+      }
+    }
+  }
+
+  .two-photo-grid {
+    display: grid;
+    gap: 2px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .three-photo-grid {
+    display: grid;
+    gap: 2px;
+    grid-template-columns: repeat(2, 1fr);
+
+    .image-container:first-child {
+      grid-column: span 2;
+    }
+  }
+
+  .four-photo-grid {
+    display: grid;
+    gap: 2px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .five-photo-grid {
+    display: grid;
+    gap: 2px;
+    grid-template-columns: repeat(6, 1fr);
+
+    .image-container {
+      grid-column: span 2;
+
+      &:first-child,
+      &:nth-child(2) {
+        grid-column: span 3;
       }
     }
   }

@@ -19,7 +19,10 @@ export default function App() {
 
   return (
     <>
-      <header>Header</header>
+      <header>
+        <h1>Image Grid</h1>
+      </header>
+
       <main>
         <ImageGrid data={data} />
 
