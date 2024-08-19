@@ -24,13 +24,13 @@ export default function App() {
       </header>
 
       <main>
-        <ImageGrid data={data} />
-
         <ImagePicker
           images={images}
           selectedImages={selectedImages}
           onSelect={handleOnSelect}
         />
+
+        <ImageGrid data={data} />
       </main>
     </>
   );
