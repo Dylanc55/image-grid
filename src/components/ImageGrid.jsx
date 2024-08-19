@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function ImageGrid({ data }) {
+export default function ImageGrid({ data, orientation }) {
   const [width, setWidth] = useState();
 
   const grid = useRef();
