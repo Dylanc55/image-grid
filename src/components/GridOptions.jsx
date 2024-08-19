@@ -11,7 +11,7 @@ export default function GidOptions({ onSet }) {
   return (
     <form onSubmit={handleSubmit}>
       <div className="form-control">
-        <label htmlFor="style-select"></label>
+        <label htmlFor="style-select">Grid Style</label>
         <select name="style" id="style-select">
           <option value="facebook">Facebook</option>
           <option value="twitter">Twitter</option>
@@ -20,7 +20,7 @@ export default function GidOptions({ onSet }) {
       </div>
 
       <div className="form-control">
-        <label htmlFor="orientation-select"></label>
+        <label htmlFor="orientation-select">Orientation</label>
         <select name="orientation" id="orientation-select">
           <option value="square">Square</option>
           <option value="portrait">Portrait</option>
