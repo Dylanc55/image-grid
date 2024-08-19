@@ -9,7 +9,7 @@ export default function GidOptions({ onSet }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="grid-options" onSubmit={handleSubmit}>
       <div className="form-control">
         <label htmlFor="style-select">Grid Style</label>
         <select name="style" id="style-select">
