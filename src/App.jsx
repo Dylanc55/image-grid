@@ -4,7 +4,7 @@ import images from "./images.js";
 
 import GridOptions from "./components/GridOptions.jsx";
 import ImagePicker from "./components/ImagePicker";
-import ImageGrid from "./components/ImageGrid.jsx";
+import FacebookGrid from "./components/FacebookGrid.jsx";
 
 const initialGridOptions = {
   style: "facebook",
@@ -19,6 +19,8 @@ export default function App() {
   const style = options.style;
   const orientation = options.orientation;
 
+  let imageGrid;
+
   function handleSetOptions(data) {
     setOptions(data);
   }
@@ -29,6 +31,10 @@ export default function App() {
     } else {
       setSelectedImages((prev) => [...prev, imageId]);
     }
+  }
+
+  if (style === "facebook") {
+    imageGrid = <FacebookGrid data={data} orientation={orientation} />;
   }
 
   return (
@@ -46,9 +52,7 @@ export default function App() {
           onSelect={handleOnSelect}
         />
 
-        {style === "facebook" && (
-          <ImageGrid data={data} orientation={orientation} />
-        )}
+        {imageGrid}
       </main>
     </>
   );

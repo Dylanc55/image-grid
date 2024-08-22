@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function ImageGrid({ data, orientation }) {
+export default function FacebookGrid({ data, orientation }) {
   const [width, setWidth] = useState();
 
   const grid = useRef();
