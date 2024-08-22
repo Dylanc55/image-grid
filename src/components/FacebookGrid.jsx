@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+
+let isFirstRender = true;
 
 export default function FacebookGrid({ data, orientation }) {
   const [width, setWidth] = useState();
@@ -11,16 +13,20 @@ export default function FacebookGrid({ data, orientation }) {
   let classes = "one-photo-grid";
   let styles = { gridAutoRows: `auto` };
 
-  function onResize() {
-    if (grid.current) setWidth(grid.current.clientWidth);
-  }
+  const onResize = useCallback(() => {
+    if (grid.current && width !== grid.current.clientWidth) {
+      setWidth(grid.current.clientWidth);
+    }
+  }, [width]);
 
   useEffect(() => {
     window.addEventListener("resize", onResize);
-    onResize();
+
+    if (isFirstRender) onResize();
+    else isFirstRender = false;
 
     return () => window.removeEventListener("resize", onResize);
-  }, [width]);
+  }, [width, onResize]);
 
   switch (orientation) {
     case "square": {
@@ -114,10 +120,10 @@ export default function FacebookGrid({ data, orientation }) {
   }
 
   return (
-    <div ref={grid} id="image-grid">
-      {!images.length && <div className="placeholder"></div>}
+    <div ref={grid} id="facebook-grid">
+      {images.length === 0 && <div className="placeholder"></div>}
 
-      {!!images.length && (
+      {images.length > 0 && (
         <ul className={classes} style={styles}>
           {images.map((image, index) => {
             const {

@@ -174,17 +174,11 @@ main {
   }
 }
 
-#image-grid {
+#facebook-grid {
   position: relative;
   width: 100%;
   max-width: 50rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-
-  .placeholder {
-    width: 100%;
-    height: 30rem;
-    background-color: #e0e5b6;
-  }
 
   .image-container {
     position: relative;
@@ -195,28 +189,6 @@ main {
       height: 100%;
       background-color: #e1e1e1;
       object-fit: cover;
-    }
-
-    button {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      border-radius: 12px;
-      border-width: 0;
-      color: white;
-      font-weight: 700;
-      background-color: #9d9c9c;
-      transition: background-color 300ms ease;
-
-      &:hover {
-        cursor: pointer;
-        background: #575c66;
-      }
     }
 
     .additional-images-overlay {
@@ -347,6 +319,75 @@ main {
         grid-column: span 2;
         grid-row: span 2;
       }
+    }
+  }
+}
+
+#twitter-grid {
+  position: relative;
+  width: 100%;
+  max-width: 50rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+
+  .one-photo-grid {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-auto-rows: auto;
+  }
+
+  .two-photo-grid,
+  .three-photo-grid,
+  .four-photo-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 4px;
+  }
+
+  .three-photo-grid {
+    :first-child {
+      grid-row: 1 / -1;
+    }
+  }
+
+  .image-container {
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      background-color: #e1e1e1;
+      object-fit: cover;
+    }
+  }
+}
+
+.placeholder {
+  width: 100%;
+  height: 30rem;
+  background-color: #e0e5b6;
+}
+
+.image-container {
+  button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    border-width: 0;
+    color: white;
+    font-weight: 700;
+    background-color: #9d9c9c;
+    transition: background-color 300ms ease;
+
+    &:hover {
+      cursor: pointer;
+      background: #575c66;
     }
   }
 }

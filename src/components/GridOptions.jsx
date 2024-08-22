@@ -1,4 +1,6 @@
-export default function GidOptions({ onSet }) {
+export default function GidOptions({ style, onSet }) {
+  const isFacebookGrid = style === "facebook";
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -19,14 +21,16 @@ export default function GidOptions({ onSet }) {
         </select>
       </div>
 
-      <div className="form-control">
-        <label htmlFor="orientation-select">Orientation</label>
-        <select name="orientation" id="orientation-select">
-          <option value="square">Square</option>
-          <option value="portrait">Portrait</option>
-          <option value="landscape">Landscape</option>
-        </select>
-      </div>
+      {isFacebookGrid && (
+        <div className="form-control">
+          <label htmlFor="orientation-select">Orientation</label>
+          <select name="orientation" id="orientation-select">
+            <option value="square">Square</option>
+            <option value="portrait">Portrait</option>
+            <option value="landscape">Landscape</option>
+          </select>
+        </div>
+      )}
 
       <div className="form-actions">
         <button>Set</button>
