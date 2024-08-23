@@ -417,6 +417,31 @@ main {
   .next-button {
     right: 12px;
   }
+
+  .carousel-indicator-container {
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    display: flex;
+    flex-direction: row;
+    transform: translateX(-50%);
+
+    .carousel-indicator {
+      width: 6px;
+      height: 6px;
+      margin-right: 4px;
+      border-radius: 50%;
+      background: #a8a8a8;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .current {
+      background: #4794ef;
+    }
+  }
 }
 
 .placeholder {

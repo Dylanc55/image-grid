@@ -6,8 +6,9 @@ export default function ImageCarousel({ data, orientation }) {
 
   const carousel = useRef();
 
+  const imagesLength = data.length;
   const showPrev = current > 0;
-  const showNext = current < data.length - 1;
+  const showNext = current < imagesLength - 1;
 
   let carouselStyles;
   let itemStyles;
@@ -34,6 +35,10 @@ export default function ImageCarousel({ data, orientation }) {
     () => window.removeEventListener("resize", onResize);
   }, [width, onResize]);
 
+  useEffect(() => {
+    setCurrent(0);
+  }, [imagesLength]);
+
   if (orientation === "square") {
     carouselStyles = { height: `${width}px` };
     itemStyles = { height: `${width}px`, minWidth: `${width}px` };
@@ -51,9 +56,9 @@ export default function ImageCarousel({ data, orientation }) {
 
   return (
     <div ref={carousel} id="instagram-carousel">
-      {data.length === 0 && <div className="placeholder"></div>}
+      {imagesLength === 0 && <div className="placeholder"></div>}
 
-      {data.length > 0 && (
+      {imagesLength > 0 && (
         <div className="main-carousel" style={carouselStyles}>
           <ul style={{ left: `-${width * current}px` }}>
             {data.map(({ id, image: { src, alt } }) => (
@@ -65,16 +70,31 @@ export default function ImageCarousel({ data, orientation }) {
         </div>
       )}
 
-      {data.length > 0 && showPrev && (
+      {imagesLength > 0 && showPrev && (
         <button className="prev-button" onClick={handlePrev}>
           &#10094;
         </button>
       )}
 
-      {data.length > 0 && showNext && (
+      {imagesLength > 0 && showNext && (
         <button className="next-button" onClick={handleNext}>
           &#10095;
         </button>
+      )}
+
+      {imagesLength > 1 && (
+        <ul className="carousel-indicator-container">
+          {data.map((image, index) => (
+            <li
+              key={index}
+              className={
+                index === current
+                  ? "carousel-indicator current"
+                  : "carousel-indicator"
+              }
+            ></li>
+          ))}
+        </ul>
       )}
     </div>
   );
