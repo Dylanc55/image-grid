@@ -84,9 +84,9 @@ export default function ImageCarousel({ data, orientation }) {
 
       {imagesLength > 1 && (
         <ul className="carousel-indicator-container">
-          {data.map((image, index) => (
+          {data.map(({ id }, index) => (
             <li
-              key={index}
+              key={id}
               className={
                 index === current
                   ? "carousel-indicator current"
