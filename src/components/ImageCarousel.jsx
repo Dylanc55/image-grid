@@ -8,10 +8,19 @@ export default function ImageCarousel({ data, orientation }) {
 
   const carousel = useRef();
 
-  const start = 0;
-  const end = data.length ? data.length - 1 : 0;
+  const showPrev = current > 0;
+  const showNext = current < data.length - 1;
 
-  let styles;
+  let carouselStyles;
+  let itemStyles;
+
+  const handlePrev = () => {
+    setCurrent((prev) => prev - 1);
+  };
+
+  const handleNext = () => {
+    setCurrent((prev) => prev + 1);
+  };
 
   const onResize = useCallback(() => {
     if (carousel.current && width !== carousel.current.clientWidth) {
@@ -31,24 +40,47 @@ export default function ImageCarousel({ data, orientation }) {
   }, [width, onResize]);
 
   if (orientation === "square") {
-    styles = { height: `${width}px` };
+    carouselStyles = { height: `${width}px` };
+    itemStyles = { height: `${width}px`, minWidth: `${width}px` };
   }
 
   if (orientation === "portrait") {
-    styles = { height: `${width * 1.25}px` };
+    carouselStyles = { height: `${width * 1.25}px` };
+    itemStyles = { height: `${width * 1.25}px`, minWidth: `${width}px` };
+  }
+
+  if (orientation === "landscape") {
+    carouselStyles = { height: `${width * 0.67}px` };
+    itemStyles = { height: `${width * 0.67}px`, minWidth: `${width}px` };
   }
 
   return (
     <div ref={carousel} id="instagram-carousel">
       {data.length === 0 && <div className="placeholder"></div>}
 
-      <ul>
-        {data.map(({ id, image: { src, alt } }) => (
-          <li key={id} className="image-container" style={styles}>
-            <img src={src} alt={alt} />
-          </li>
-        ))}
-      </ul>
+      {data.length > 0 && (
+        <div className="main-carousel" style={carouselStyles}>
+          <ul style={{ left: `-${width * current}px` }}>
+            {data.map(({ id, image: { src, alt } }) => (
+              <li key={id} className="image-container" style={itemStyles}>
+                <img src={src} alt={alt} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {data.length > 0 && showPrev && (
+        <button className="prev-button" onClick={handlePrev}>
+          &#10094;
+        </button>
+      )}
+
+      {data.length > 0 && showNext && (
+        <button className="next-button" onClick={handleNext}>
+          &#10095;
+        </button>
+      )}
     </div>
   );
 }
