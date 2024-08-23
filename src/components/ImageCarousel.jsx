@@ -1,7 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-let isFirstRender = true;
-
 export default function ImageCarousel({ data, orientation }) {
   const [width, setWidth] = useState();
   const [current, setCurrent] = useState(0);
@@ -31,10 +29,7 @@ export default function ImageCarousel({ data, orientation }) {
   useEffect(() => {
     window.addEventListener("resize", onResize);
 
-    if (isFirstRender) {
-      isFirstRender = false;
-      onResize();
-    }
+    onResize();
 
     () => window.removeEventListener("resize", onResize);
   }, [width, onResize]);

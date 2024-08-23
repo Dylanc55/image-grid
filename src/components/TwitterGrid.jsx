@@ -1,7 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-let isFirstRender = true;
-
 export default function TwitterGrid({ data }) {
   const [width, setWidth] = useState();
 
@@ -21,10 +19,7 @@ export default function TwitterGrid({ data }) {
   useEffect(() => {
     window.addEventListener("resize", onResize);
 
-    if (isFirstRender) {
-      isFirstRender = false;
-      onResize();
-    }
+    onResize();
 
     () => window.removeEventListener("resize", onResize);
   }, [width, onResize]);

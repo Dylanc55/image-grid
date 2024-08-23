@@ -1,7 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-let isFirstRender = true;
-
 export default function FacebookGrid({ data, orientation }) {
   const [width, setWidth] = useState();
 
@@ -22,10 +20,7 @@ export default function FacebookGrid({ data, orientation }) {
   useEffect(() => {
     window.addEventListener("resize", onResize);
 
-    if (isFirstRender) {
-      isFirstRender = false;
-      onResize();
-    }
+    onResize();
 
     return () => window.removeEventListener("resize", onResize);
   }, [width, onResize]);
