@@ -21,8 +21,10 @@ export default function TwitterGrid({ data }) {
   useEffect(() => {
     window.addEventListener("resize", onResize);
 
-    if (isFirstRender) onResize();
-    else isFirstRender = false;
+    if (isFirstRender) {
+      isFirstRender = false;
+      onResize();
+    }
 
     () => window.removeEventListener("resize", onResize);
   }, [width, onResize]);

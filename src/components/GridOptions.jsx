@@ -1,5 +1,5 @@
 export default function GidOptions({ style, onSet }) {
-  const isFacebookGrid = style === "facebook";
+  const showOrientation = style !== "twitter";
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -21,7 +21,7 @@ export default function GidOptions({ style, onSet }) {
         </select>
       </div>
 
-      {isFacebookGrid && (
+      {showOrientation && (
         <div className="form-control">
           <label htmlFor="orientation-select">Orientation</label>
           <select name="orientation" id="orientation-select">

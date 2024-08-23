@@ -22,8 +22,10 @@ export default function FacebookGrid({ data, orientation }) {
   useEffect(() => {
     window.addEventListener("resize", onResize);
 
-    if (isFirstRender) onResize();
-    else isFirstRender = false;
+    if (isFirstRender) {
+      isFirstRender = false;
+      onResize();
+    }
 
     return () => window.removeEventListener("resize", onResize);
   }, [width, onResize]);

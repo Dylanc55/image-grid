@@ -47,6 +47,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 414px;
   min-height: 90vh;
   padding: 2rem;
 }
@@ -116,16 +117,9 @@ main {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 880px) {
   #grid-options {
     flex-direction: column;
-
-    .form-control {
-      label,
-      select {
-        padding: 0.125rem 0.5rem;
-      }
-    }
   }
 }
 
@@ -348,6 +342,25 @@ main {
       grid-row: 1 / -1;
     }
   }
+
+  .image-container {
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      background-color: #e1e1e1;
+      object-fit: cover;
+    }
+  }
+}
+
+#instagram-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 50rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 
   .image-container {
     position: relative;

@@ -2,6 +2,7 @@ export default function ImagePicker({ images, selectedImages, onSelect }) {
   return (
     <div id="image-picker">
       <p>Select images to add to grid</p>
+
       <ul>
         {images.map(({ id, image: { src, alt } }) => (
           <li

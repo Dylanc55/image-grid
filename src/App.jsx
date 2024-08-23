@@ -6,6 +6,7 @@ import GridOptions from "./components/GridOptions.jsx";
 import ImagePicker from "./components/ImagePicker";
 import FacebookGrid from "./components/FacebookGrid.jsx";
 import TwitterGrid from "./components/TwitterGrid.jsx";
+import ImageCarousel from "./components/ImageCarousel.jsx";
 
 const initialGridOptions = {
   style: "facebook",
@@ -23,7 +24,10 @@ export default function App() {
   let imageGrid;
 
   function handleSetOptions(data) {
-    setOptions((prev) => ({ ...prev, ...data }));
+    setOptions((prev) => {
+      if (prev.style === "twitter") return { ...data, orientation: "square" };
+      else return { ...prev, ...data };
+    });
   }
 
   function handleOnSelect(imageId) {
@@ -40,6 +44,10 @@ export default function App() {
 
   if (style === "twitter") {
     imageGrid = <TwitterGrid data={data} />;
+  }
+
+  if (style === "instagram") {
+    imageGrid = <ImageCarousel data={data} orientation={orientation} />;
   }
 
   return (
