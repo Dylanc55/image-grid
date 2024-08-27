@@ -30,19 +30,13 @@ export default function FacebookGrid({ data, orientation }) {
       if (images.length === 2) {
         classes = "two-photo-grid";
         styles = { gridAutoRows: `${width / 2}px` };
-      }
-
-      if (images.length === 3) {
+      } else if (images.length === 3) {
         classes = "three-photo-grid";
         styles = { gridTemplateRows: `${width / 2}px ${width / 2}px` };
-      }
-
-      if (images.length === 4) {
+      } else if (images.length === 4) {
         classes = "four-photo-grid-square";
         styles = { gridTemplateRows: `${width / 2}px ${width / 2}px` };
-      }
-
-      if (images.length === 5) {
+      } else if (images.length === 5) {
         classes = "five-photo-grid";
         styles = {
           gridTemplateRows: `${width / 2}px ${width / 3}px`,
@@ -56,21 +50,15 @@ export default function FacebookGrid({ data, orientation }) {
       if (images.length === 2) {
         classes = "two-photo-grid";
         styles = { gridAutoRows: `${width}px` };
-      }
-
-      if (images.length === 3) {
+      } else if (images.length === 3) {
         classes = "three-photo-grid-portrait";
         styles = { gridTemplateRows: `${width / 2}px ${width / 2}px` };
-      }
-
-      if (images.length === 4) {
+      } else if (images.length === 4) {
         classes = "four-photo-grid-portrait";
         styles = {
           gridTemplateRows: `${width / 3}px ${width / 3}px ${width / 3}px`,
         };
-      }
-
-      if (images.length === 5) {
+      } else if (images.length === 5) {
         classes = "five-photo-grid";
         styles = {
           gridTemplateRows: `${width / 2}px ${width / 3}px`,
@@ -84,23 +72,17 @@ export default function FacebookGrid({ data, orientation }) {
       if (images.length === 2) {
         classes = "two-photo-grid-landscape";
         styles = { gridTemplateRows: `${width / 2}px ${width / 2}px` };
-      }
-
-      if (images.length === 3) {
+      } else if (images.length === 3) {
         classes = "three-photo-grid";
         styles = {
           gridTemplateRows: `${width / 1.505}px ${width / 3.018}px`,
         };
-      }
-
-      if (images.length === 4) {
+      } else if (images.length === 4) {
         classes = "four-photo-grid-landscape";
         styles = {
           gridTemplateRows: `${width / 3}px ${width / 3}px ${width / 3}px`,
         };
-      }
-
-      if (images.length === 5) {
+      } else if (images.length === 5) {
         classes = "five-photo-grid-landscape";
         styles = {
           gridTemplateRows: `${width / 6}px ${width / 6}px ${width / 6}px ${
